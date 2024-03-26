@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getAllMessages } from './redux/features/messagesSlice'
+import Messages from './components/messages/Messages'
 
 function App() {
 
@@ -22,12 +23,12 @@ function App() {
   return (
     <main className='flex'>
 
-      <aside className='w-full'>
+      <aside className='z-10'>
         <Sidebar />
       </aside>
 
-      <section >
-
+      <section className='w-full'>
+        <Messages />
       </section>
 
     </main>
