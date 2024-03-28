@@ -1,7 +1,23 @@
 #messages{
     background-image: url('../../assets/chat-background.jpeg') ;
     background-repeat: no-repeat;
-    background-size: 700px;
+    background-size: 400px;
     background-position: center;
     background-repeat: repeat; 
+    position: fixed;
+    z-index: -1;
+}
+
+#messagesContainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+#messagesContainer::-webkit-scrollbar-track {
+    background: #ffffff; 
+    border-radius: 5px;
+}
+
+#messagesContainer::-webkit-scrollbar-thumb {
+    background: #adafb1; 
+    border-radius: 5px;
 }

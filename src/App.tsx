@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { getAllMessages } from './redux/features/messagesSlice'
 import Messages from './components/messages/Messages'
+import { saveMessage } from './redux/features/conversationSlice'
+import DataInfo from './types/dataInfo.type'
 
 function App() {
 
@@ -14,6 +16,11 @@ function App() {
     const fetchMessages = async () =>{
       const {data} = await axios('http://www.app.readychatai.com/data')
 
+      if(data){
+        data.map((message: DataInfo) => {
+            dispatch(saveMessage(message))
+        })
+      }
       dispatch(getAllMessages(data))
     }
     fetchMessages()
