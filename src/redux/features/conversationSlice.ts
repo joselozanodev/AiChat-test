@@ -19,14 +19,20 @@ interface Conversation {
   lastMessageId: number | null;
 }
 
-interface ConversationState {
+export interface ConversationState {
   conversations: { [key: string]: Conversation };
-  activeConversation: string
+  activeConversation: string;
+  conversationArray: Object[];
+  conversationArrayAux: Object[];
+  isLoaded: boolean
 }
 
 const initialState: ConversationState = {
   conversations: {},
-  activeConversation: ""
+  activeConversation: "",
+  conversationArray: [],
+  conversationArrayAux: [],
+  isLoaded: false
 }
 
 const conversationSlice = createSlice({
@@ -65,9 +71,29 @@ const conversationSlice = createSlice({
     setCurrentConversation: (state: ConversationState, action: PayloadAction<string>)=>{
       
       state.activeConversation = action.payload
+    },
+
+    createConversationArray: (state: ConversationState)=>{
+
+      if(state.conversationArray.length === 0){
+        const conversationEntries = Object.entries(state.conversations)
+  
+        conversationEntries.map(conversation => state.conversationArray.push({conversation: conversation[1], id: conversation[0]}))
+        conversationEntries.map(conversation => state.conversationArrayAux.push({conversation: conversation[1], id: conversation[0]}))
+        state.isLoaded = true
+      }
+
+    
+    },
+
+    filterConversationsByName: (state: ConversationState, action: PayloadAction<string>)=>{
+
+      state.conversationArrayAux = state.conversationArray.filter((conversation: any) => conversation.conversation.messages.find((m: any)=> m.sender_name.toLowerCase().includes(action.payload.toLowerCase())))
+
     }
+
   }
 })
 
-export const { saveMessage, setCurrentConversation } = conversationSlice.actions;
+export const { saveMessage, setCurrentConversation, createConversationArray, filterConversationsByName} = conversationSlice.actions;
 export default conversationSlice.reducer;

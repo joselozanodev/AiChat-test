@@ -25,7 +25,7 @@ const ChatInfoPreview = ({
         <li key={key} className="flex justify-center cursor-pointer"
           onClick={()=>{ dispatch(setCurrentConversation(id)) }}
         >
-          <section className="font-lato text-chatBlue-50 bg-chatBlue-500 mb-[1rem] w-[90%] p-[1rem] flex items-center rounded-[5px]">
+          <section className="font-lato text-chatBlue-50 bg-chatBlue-500 hover:bg-chatBlue-400 transition-all mb-[1rem] w-[90%] p-[1rem] flex items-center rounded-[5px]">
             <div className="w-[85%]">
               <h3 className="text-slate-200 font-[600] text-[.8rem]">
                 {platform}

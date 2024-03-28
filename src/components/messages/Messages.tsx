@@ -8,7 +8,7 @@ import DataInfo from "../../types/dataInfo.type"
 export const Message = ({ text, isSender }: MessageProps) =>{
   return(
   <div className={`bg-gradient-to-bl inline-flex px-[.6rem] py-[.7rem] rounded-[6px] shadow-sm ${isSender ? "shadow-chatBlue-700 from-chatBlue-700 to-chatBlue-800 self-start max-w-[60%]" : "shadow-chatBlue-700 from-chatBlue-500 to-chatBlue-600 self-end max-w-[60%]"} `}>
-  <p className="font-lato font-[400] text-chatBlue-100">{text}</p>
+  <p className="font-lato font-[400] text-chatBlue-100 text-[1.4rem]">{text}</p>
 </div>
   )
 }
