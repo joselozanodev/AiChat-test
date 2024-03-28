@@ -9,5 +9,6 @@ export type Conversation = {
         lastMessage: string;
         lastMessageId: number;
         messages: DataInfo[]
-    }
+    },
+    id: string
 }

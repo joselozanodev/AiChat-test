@@ -4,4 +4,5 @@ export type MessagePreviewProps = {
   date: string;
   message: string;
   key: number;
+  id: string
 };

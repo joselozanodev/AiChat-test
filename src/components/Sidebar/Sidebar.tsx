@@ -13,7 +13,7 @@ const sidebar = () => {
 
    const conversationEntries = Object.entries(conversations)
 
-   conversationEntries.map(conversation => conversationsArray.push({conversation: conversation[1]}))
+   conversationEntries.map(conversation => conversationsArray.push({conversation: conversation[1], id: conversation[0]}))
 
     console.log(conversationsArray)
 
@@ -24,7 +24,7 @@ const sidebar = () => {
 
                 conversationsArray.map((conversation: Conversation, index: number)=>{
                   const userName = conversation.conversation.messages.find(message => message.sender_name !== 'bot')?.sender_name || 'Usuario desconocido';
-                  return(<ChatInfoPreview name={userName} date={conversation.conversation?.messages[0]?.message_date} key={index} message={conversation.conversation.lastMessage} platform={conversation.conversation.messages[0].platform} />)
+                  return(<ChatInfoPreview name={userName} date={conversation.conversation?.messages[0]?.message_date} key={index} message={conversation.conversation.lastMessage} platform={conversation.conversation.messages[0].platform} id={conversation.id} />)
                 })
               
            }
